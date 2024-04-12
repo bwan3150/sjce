@@ -89,7 +89,7 @@ public class Move {
    return new int[] {source, destination, rookMove[0], rookMove[1]};
   } else return new int[] {source, destination};
  }
- private int[] castleRookMove() {
+ public int[] castleRookMove() {
   switch(source + destination) {
   case 10: return new int[] {CASTLE[WOO_CASTLE][0], CASTLE[WOO_CASTLE][1],
     PiecesUI.WHITE_ROOK};
@@ -102,22 +102,22 @@ public class Move {
   }
   return null;
  }
- private Move castleMove() {
+ public Move castleMove() {
   if(!isCastleMove()) return null;
   int[] rookMove = castleRookMove();
   return new Move(rookMove[0], rookMove[1], rookMove[2]);
  }
- private boolean isCastleMove() {
+ public boolean isCastleMove() {
   if(!PiecesUI.isPiece(PiecesUI.KING, piece)) return false;
   if(BoardUI.getRankDistance(destination, source) != 0) return  false;
   if(Math.abs(BoardUI.getFileDistance(destination, source)) != 2) return false;
   return true;
  }
- private boolean isEnPassant() {
+ public boolean isEnPassant() {
   if(captured >= ENPASSANT_CAPTURE) return true;
   else return false;
  }
- private int enPassant(int[] board) {
+ public int enPassant(int[] board) {
   if(!PiecesUI.isPiece(PiecesUI.PAWN, piece)) return BoardUI.NO_SQUARE;
   int distance = Math.abs(BoardUI.getFileDistance(destination, source));
 if(distance != 1 || board[destination] != PiecesUI.NO_PIECE) return BoardUI.NO_SQUARE;

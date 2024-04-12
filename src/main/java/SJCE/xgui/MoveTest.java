@@ -1,7 +1,9 @@
-package SJCE.xgui.JPanel;
+package SJCE.xgui;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static SJCE.xgui.Move.ENPASSANT_CAPTURE;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MoveTest {
@@ -80,5 +82,6 @@ public class MoveTest {
         move = new Move(48, 32, PiecesUI.BLACK_PAWN);
         int result = move.enPassant(board);
         assertEquals(32, result);
+
     }
 }
